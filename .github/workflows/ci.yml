@@ -1,0 +1,16 @@
+name: Integracion continua
+
+on: 
+  push
+
+jobs:
+    compilar-ejecutar:
+        runs-on: ubuntu-22.04
+        steps:
+          - name: Clonar repositorio
+            uses: actions/checkout@v4
+        
+          - name: Compilar código
+            run: gcc ejercicios.c -o ejercicios
+          - name: Ejecutar programa
+            run: ./ejercicios
