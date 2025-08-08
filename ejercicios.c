@@ -6,7 +6,7 @@ int suma(int numUno, int numDos){
 
 int main(){
     int numUno = 1;
-    int numeDos = 2;
+    numeDos = 2;
 
     int resultado = suma(numUno,numeDos);
     printf("El resultado de la suma es: %d \n", resultado);
