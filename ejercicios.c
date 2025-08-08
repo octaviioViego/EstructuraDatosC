@@ -1,4 +1,6 @@
 #include<stdio.h>
+#include<stdlib.h>
+
 // Ejercicio: Sumar dos numeros
 int suma(int numUno, int numDos){
     return numUno + numDos;
@@ -90,6 +92,72 @@ void opeArreglos(){
     
 }
 
+/*
+    Listas enlazadas (Linked Lists)
+
+    Una lista enlazada es una colección de elementos llamdos nodos, donde cada nodo
+    contiene dos partes: el dato y un puntero que apunta al siguiente nodo en la secuencia.
+    El primer nodo de la lista se llama cabeza (head). A diferencia de los arreglos, los nodos
+    no necesitan estar en memoria contigua.  
+
+    Características principales:
+    - Tamaño dinamico: El tamaño de una lista enlazada puede crecer o disminuir en tiempo de 
+      ejecución.
+    - Inserción y eliminación eficientes: Es muy facil añadir o quitar nodos en cualquier posición 
+      sin mover los demás nodos.
+    - Acceso secuencial: Para llegar a un elemento especifico, debes empezar desde el inicio
+      (head) y seguir los punteros uno por uno.
+*/
+
+/*
+    Para implementar una lista enlazada devemos crear una estructura para el nodo
+*/
+
+// Estructura para los nodos
+struct Nodo{
+    int dato; //Dato que almacena el nodo
+    struct Nodo* siguiente; //Puntero al siguiente nodo
+};
+
+// Función para imprimir la lista
+void ImprimirLista(struct Nodo* nodo){
+    while(nodo != NULL){
+        printf("%d", nodo->dato);
+        nodo = nodo->siguiente; //Avanza al siguiente nodo.
+        printf("\n");
+    }
+}
+
+//Función para insertar nodos a la lista
+void InsertarNodos(){
+    struct Nodo* cabeza = NULL;
+    struct Nodo* segundo = NULL;
+    struct Nodo* tercero = NULL;
+    struct Nodo* cuarto = NULL;
+
+    //Asignart memoria para nodos
+    cabeza = (struct Nodo*)malloc(sizeof(struct Nodo));
+    segundo = (struct Nodo*)malloc(sizeof(struct Nodo));
+    tercero = (struct Nodo*)malloc(sizeof(struct Nodo));
+    cuarto = (struct Nodo*)malloc(sizeof(struct Nodo));
+
+    //Asignamos datos y enlazamos los nodos
+    cabeza->dato =1;
+    cabeza->siguiente=segundo;
+    
+    segundo->dato=2;
+    segundo->siguiente=tercero;
+
+    tercero->dato=3;
+    tercero->siguiente=cuarto;
+
+    cuarto->dato=4;
+    cuarto->siguiente=NULL; //El último nodo apunta a NULL
+
+    //Imprimir la lista
+    printf("Lista enlazada es: ");
+    ImprimirLista(cabeza);
+}
 
 // Función principal
 int main(){
@@ -106,6 +174,7 @@ int main(){
     printf("2. Calcular Fibonacci recursivo. \n");
     printf("3. Calcular Fibonacci iterativo. \n");
     printf("4. Interactuar con un arreglo. \n");
+    printf("5. Interactuar con una lista ligada. \n");
     printf("Seleccione una opcion: ");
     scanf("%d", &opcion);
 
@@ -133,6 +202,9 @@ int main(){
         break;
     case 4:
         opeArreglos();
+        break;
+    case 5:
+        InsertarNodos();
         break;
 
     default:
