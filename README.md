@@ -1,4 +1,4 @@
-**Proyecto de estudio de estructuras de datos en C**
+**Proyecto de estudio en estructuras de datos en C**
 
 Este proyecto fue creado con el objetivo de estudiar e implementar las estructuras de datos más conocidas utilizando el lenguaje de programación C. Además, se incluyen algoritmos tanto clásicos como menos comunes, con el propósito de fortalecer la lógica de programación y la comprensión profunda de estos conceptos.
 

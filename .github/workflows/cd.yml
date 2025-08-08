@@ -1,4 +1,4 @@
-name: Integración continua
+name: Despliegue de Ejercicios
 
 # Seccion de eventos que activan el flujo de trabajo
 # Aqui se activa cuando se cree una nueva versión (release)
