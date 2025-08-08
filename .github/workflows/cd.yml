@@ -1,0 +1,31 @@
+name: Integración continua
+
+# Seccion de eventos que activan el flujo de trabajo
+# Aqui se activa cuando se cree una nueva versión (release)
+on:      
+  release:
+    types: [created] 
+
+# Permisos para el flujo de trabajo
+permissions: 
+    contents: write
+
+# Sección de trabajos que se ejecutarán en el flujo de trabajo
+jobs: 
+  compilar-ejecutar:
+    # Define el entorno donde se ejecutará el trabajo
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Clonar el repositorio
+        uses: actions/checkout@v4
+      
+      - name: Compilar código
+        run: gcc ejercicios.c -o ejercicios
+    
+      - name: Subir el ejecutable
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: ejercicios
+          asset_name: ejercicios
+          tag: ${{ github.ref_name }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}

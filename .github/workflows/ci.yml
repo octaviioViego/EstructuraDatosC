@@ -1,8 +1,12 @@
+#Nombre de la acción
 name: Integracion continua
 
+# Sección de eventos que activan el flujo de trabajo
+# Aquí se activa cuando se hace un push al repositorio
 on: 
   push
 
+# Permisos para el flujo de trabajo
 jobs:
     compilar-ejecutar:
         runs-on: ubuntu-22.04
