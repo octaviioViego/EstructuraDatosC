@@ -159,6 +159,113 @@ void InsertarNodos(){
     ImprimirLista(cabeza);
 }
 
+/*
+    Listas Enlazadas Simples (Singly Linked Lists)
+
+    Es una versión mejorada en la que cada nodo tiene dos punteros: uno que apunta al siguiente
+    nodo y otro que apunta al anterior nodo.
+
+    Caracteristicas clave:
+    - Recorrido bidireccional: Puedes moverte hacia adelante (usando el puntero siguiente)
+      y hacia atrás (usando el puntero anterior) en lalista. 
+    - Operaciones más eficientes: La eliminación de un nodo es más sencilla por que no necesitas un puntero
+      al nodo anterior para desplazarlo; el nodo actual ya lo tiene.
+    - Memoria adicional: Cada nodo requiere más memoria, ya que necesita almacenar un puntero
+      adicional (anterior).
+*/
+
+/*
+    Para implementar una lista doblemente enlazada.
+*/
+
+struct ListaEnlazada
+{
+    int dato;
+    struct ListaEnlazada* anterior;
+    struct ListaEnlazada* siguiente;
+};
+
+
+// Función para imprimir la lista doblemente ligada.
+void ImprimirListaDoble(struct ListaEnlazada* nodo){
+
+    while(nodo != NULL){
+
+        printf("%d", nodo->dato);
+
+        nodo = nodo->siguiente; //Avanza al siguiente nodo.
+
+        printf("\n");
+
+    }
+
+}
+
+void llenarListaEnlazada(){
+    struct ListaEnlazada* cabeza= NULL;
+    struct ListaEnlazada* primero= NULL;
+    struct ListaEnlazada* segundo= NULL;
+    struct ListaEnlazada* tercero= NULL;
+    
+
+    /*
+        Explicación de la asignación de memoria
+        
+        malloc(sizeof(struct ListaEnlazada))
+        - sizeof(struct ListaEnlazada)
+            Calcula la cantidad de bytes que necesita tu estructura ListaEnlazada.
+        - malloc()
+            es una función de la biblioteca <stdlib.h> que solicita al sistema operativo 
+            un bloque de memoria del tamaño especificado. devuelve un puntero de tipo 
+            void* que apunta a la primera dirección de ese bloque de memoria.
+        - (struct ListaEnlazada*) 
+            Esto es un casting o conversión de tipo.malloc no sabe qué tipo de dato vas 
+            a almacenar en esa memoria.
+        - cabeza =
+            Finalmente, asignas la dirección de memoria recién obtenida al puntero cabeza.
+    */
+    
+    //Asignamos memoria
+    cabeza = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
+    primero = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
+    segundo = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
+    tercero = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
+
+
+
+    /*
+        Accedemos a la estructura de ListaEnlazada y asignamos los valores
+        - dato
+            Asignamos un valor de tipo entero
+        - anterior
+            Apuntamos el puntero llamado anterior a un nodo anterior o null 
+        - siguiente  
+            Apuntamos el puntero llamado siguiente a un nodo anterior o null
+    */  
+    
+    //Enlazamos los nodos a las listas
+    cabeza->dato = 1;
+    cabeza->anterior = NULL;
+    cabeza->siguiente= primero;
+
+    primero->dato = 2;
+    primero->anterior = cabeza;
+    primero->siguiente= segundo;
+
+    segundo->dato = 3;
+    segundo->anterior = primero;
+    segundo->siguiente= tercero;
+
+    tercero->dato = 4;
+    tercero->anterior = segundo;
+    tercero->siguiente= NULL;
+
+    //Imprimir la lista
+    printf("Lista enlazada doblemente enlazada es: ");
+    ImprimirListaDoble(cabeza);
+
+}
+
 // Función principal
 int main(){
     int opcion = 0;
@@ -175,6 +282,7 @@ int main(){
     printf("3. Calcular Fibonacci iterativo. \n");
     printf("4. Interactuar con un arreglo. \n");
     printf("5. Interactuar con una lista ligada. \n");
+    printf("6. Interactuar con una lista doblemente ligada. \n");
     printf("Seleccione una opcion: ");
     scanf("%d", &opcion);
 
@@ -206,7 +314,9 @@ int main(){
     case 5:
         InsertarNodos();
         break;
-
+    case 6:
+        llenarListaEnlazada();
+        break;
     default:
         printf("Opción no válida. \n");
         break;
