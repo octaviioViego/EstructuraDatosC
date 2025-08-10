@@ -20,6 +20,6 @@ jobs:
             run: ./ejercicios
           
           - name: Compilar código listas ligadas
-            run: listasLigadas.c -o ejelistasligada
+            run: gcc listasLigadas.c -o ejelistasligada
           - name: Ejecutar programa listas ligadas
             run: ./ejelistasligada
