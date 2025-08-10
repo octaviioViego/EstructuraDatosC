@@ -18,3 +18,8 @@ jobs:
             run: gcc ejercicios.c -o ejercicios
           - name: Ejecutar programa
             run: ./ejercicios
+          
+          - name: Compilar código listas ligadas
+            run: listasLigadas.c -o ejelistasligada
+          - name: Ejecutar programa listas ligadas
+            run: ./ejelistasligada

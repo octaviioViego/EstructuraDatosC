@@ -19,7 +19,7 @@ jobs:
       - name: Clonar el repositorio
         uses: actions/checkout@v4
       
-      - name: Compilar código
+      - name: Compilar código ejercicios
         run: gcc ejercicios.c -o ejercicios
     
       - name: Subir el ejecutable
@@ -29,3 +29,15 @@ jobs:
           asset_name: ejercicios
           tag: ${{ github.ref_name }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Compilar código listas ligadas 
+        run: gcc listasLigadas.c -o ejelistasligada
+    
+      - name: Subir el ejecutable
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: ejelistasligada
+          asset_name: ejelistasligada
+          tag: ${{ github.ref_name }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+ 
