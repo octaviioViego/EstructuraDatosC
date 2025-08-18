@@ -92,180 +92,6 @@ void opeArreglos(){
     
 }
 
-/*
-    Listas enlazadas (Linked Lists)
-
-    Una lista enlazada es una colección de elementos llamdos nodos, donde cada nodo
-    contiene dos partes: el dato y un puntero que apunta al siguiente nodo en la secuencia.
-    El primer nodo de la lista se llama cabeza (head). A diferencia de los arreglos, los nodos
-    no necesitan estar en memoria contigua.  
-
-    Características principales:
-    - Tamaño dinamico: El tamaño de una lista enlazada puede crecer o disminuir en tiempo de 
-      ejecución.
-    - Inserción y eliminación eficientes: Es muy facil añadir o quitar nodos en cualquier posición 
-      sin mover los demás nodos.
-    - Acceso secuencial: Para llegar a un elemento especifico, debes empezar desde el inicio
-      (head) y seguir los punteros uno por uno.
-*/
-
-/*
-    Para implementar una lista enlazada devemos crear una estructura para el nodo
-*/
-
-// Estructura para los nodos
-struct Nodo{
-    int dato; //Dato que almacena el nodo
-    struct Nodo* siguiente; //Puntero al siguiente nodo
-};
-
-// Función para imprimir la lista
-void ImprimirLista(struct Nodo* nodo){
-    while(nodo != NULL){
-        printf("%d", nodo->dato);
-        nodo = nodo->siguiente; //Avanza al siguiente nodo.
-        printf("\n");
-    }
-}
-
-//Función para insertar nodos a la lista
-void InsertarNodos(){
-    struct Nodo* cabeza = NULL;
-    struct Nodo* segundo = NULL;
-    struct Nodo* tercero = NULL;
-    struct Nodo* cuarto = NULL;
-
-    //Asignart memoria para nodos
-    cabeza = (struct Nodo*)malloc(sizeof(struct Nodo));
-    segundo = (struct Nodo*)malloc(sizeof(struct Nodo));
-    tercero = (struct Nodo*)malloc(sizeof(struct Nodo));
-    cuarto = (struct Nodo*)malloc(sizeof(struct Nodo));
-
-    //Asignamos datos y enlazamos los nodos
-    cabeza->dato =1;
-    cabeza->siguiente=segundo;
-    
-    segundo->dato=2;
-    segundo->siguiente=tercero;
-
-    tercero->dato=3;
-    tercero->siguiente=cuarto;
-
-    cuarto->dato=4;
-    cuarto->siguiente=NULL; //El último nodo apunta a NULL
-
-    //Imprimir la lista
-    printf("Lista enlazada es: ");
-    ImprimirLista(cabeza);
-}
-
-/*
-    Listas Enlazadas Simples (Singly Linked Lists)
-
-    Es una versión mejorada en la que cada nodo tiene dos punteros: uno que apunta al siguiente
-    nodo y otro que apunta al anterior nodo.
-
-    Caracteristicas clave:
-    - Recorrido bidireccional: Puedes moverte hacia adelante (usando el puntero siguiente)
-      y hacia atrás (usando el puntero anterior) en lalista. 
-    - Operaciones más eficientes: La eliminación de un nodo es más sencilla por que no necesitas un puntero
-      al nodo anterior para desplazarlo; el nodo actual ya lo tiene.
-    - Memoria adicional: Cada nodo requiere más memoria, ya que necesita almacenar un puntero
-      adicional (anterior).
-*/
-
-/*
-    Para implementar una lista doblemente enlazada.
-*/
-
-struct ListaEnlazada
-{
-    int dato;
-    struct ListaEnlazada* anterior;
-    struct ListaEnlazada* siguiente;
-};
-
-
-// Función para imprimir la lista doblemente ligada.
-void ImprimirListaDoble(struct ListaEnlazada* nodo){
-
-    while(nodo != NULL){
-
-        printf("%d", nodo->dato);
-
-        nodo = nodo->siguiente; //Avanza al siguiente nodo.
-
-        printf("\n");
-
-    }
-
-}
-
-void llenarListaEnlazada(){
-    struct ListaEnlazada* cabeza= NULL;
-    struct ListaEnlazada* primero= NULL;
-    struct ListaEnlazada* segundo= NULL;
-    struct ListaEnlazada* tercero= NULL;
-    
-
-    /*
-        Explicación de la asignación de memoria
-        
-        malloc(sizeof(struct ListaEnlazada))
-        - sizeof(struct ListaEnlazada)
-            Calcula la cantidad de bytes que necesita tu estructura ListaEnlazada.
-        - malloc()
-            es una función de la biblioteca <stdlib.h> que solicita al sistema operativo 
-            un bloque de memoria del tamaño especificado. devuelve un puntero de tipo 
-            void* que apunta a la primera dirección de ese bloque de memoria.
-        - (struct ListaEnlazada*) 
-            Esto es un casting o conversión de tipo.malloc no sabe qué tipo de dato vas 
-            a almacenar en esa memoria.
-        - cabeza =
-            Finalmente, asignas la dirección de memoria recién obtenida al puntero cabeza.
-    */
-    
-    //Asignamos memoria
-    cabeza = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
-    primero = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
-    segundo = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
-    tercero = (struct ListaEnlazada*)malloc(sizeof(struct ListaEnlazada));
-
-
-
-    /*
-        Accedemos a la estructura de ListaEnlazada y asignamos los valores
-        - dato
-            Asignamos un valor de tipo entero
-        - anterior
-            Apuntamos el puntero llamado anterior a un nodo anterior o null 
-        - siguiente  
-            Apuntamos el puntero llamado siguiente a un nodo anterior o null
-    */  
-    
-    //Enlazamos los nodos a las listas
-    cabeza->dato = 1;
-    cabeza->anterior = NULL;
-    cabeza->siguiente= primero;
-
-    primero->dato = 2;
-    primero->anterior = cabeza;
-    primero->siguiente= segundo;
-
-    segundo->dato = 3;
-    segundo->anterior = primero;
-    segundo->siguiente= tercero;
-
-    tercero->dato = 4;
-    tercero->anterior = segundo;
-    tercero->siguiente= NULL;
-
-    //Imprimir la lista
-    printf("Lista enlazada doblemente enlazada es: ");
-    ImprimirListaDoble(cabeza);
-
-}
-
 // Función principal
 int main(){
     int opcion = 0;
@@ -281,8 +107,6 @@ int main(){
     printf("2. Calcular Fibonacci recursivo. \n");
     printf("3. Calcular Fibonacci iterativo. \n");
     printf("4. Interactuar con un arreglo. \n");
-    printf("5. Interactuar con una lista ligada. \n");
-    printf("6. Interactuar con una lista doblemente ligada. \n");
     printf("Seleccione una opcion: ");
     scanf("%d", &opcion);
 
@@ -310,12 +134,6 @@ int main(){
         break;
     case 4:
         opeArreglos();
-        break;
-    case 5:
-        InsertarNodos();
-        break;
-    case 6:
-        llenarListaEnlazada();
         break;
     default:
         printf("Opción no válida. \n");

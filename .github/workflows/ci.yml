@@ -23,3 +23,19 @@ jobs:
             run: gcc listasLigadas.c -o ejelistasligada
           - name: Ejecutar programa listas ligadas
             run: ./ejelistasligada
+
+          - name: Compilar código listas ligadas dobles
+            run: gcc listasLigadasDobles.c -o ejelistasligadaDoble
+          - name: Ejecutar programa listas ligadas doble
+            run: ./ejelistasligadaDoble
+
+          - name: Compilar código grafos
+            run: gcc grafos.c -o grafos
+          - name: Ejecutar programa grafos
+            run: ./grafos
+          
+          - name: Compilar código grafosLA
+            run: gcc grafosLA.c -o grafosLA
+          - name: Ejecutar programa grafosLA
+            run: ./grafosLA
+  
